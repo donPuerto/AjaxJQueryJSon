@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+
+<div id="div1"><h2>jQuery Ajax</h2></div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+  
+    $.ajax({
+        url: 'file1.txt',
+
+        /*Success: specifies a function to be run when an AJAX request is successfully completed.
+
+        jQuery ajaxSuccess() Method:
+        $(document).ajaxSuccess(function(event,xhr,options))
+
+        Parameter						Description
+		function(event,xhr,options)		Required. Specifies the function to run if the request succeeds
+										Additional parameters:
+										event - contains the event object or DATA CONTENT
+										xhr - contains the XMLHttpRequest object
+										options - contains the options used in the AJAX request*/
+        
+        success: function(ev, xhr, opt){
+        	console.log(ev);
+        },
+
+
+        /*Error: specifies a function to be run when an AJAX request fails
+
+        jQuery ajaxError() Method:
+        $(document).ajaxError(function(event,xhr,options,exc))	
+
+        Parameter							Description
+		function(event,xhr,options,exc)		Required. Specifies the function to run if the request fails
+											Additional parameters:
+											event - contains the event object
+											xhr - contains the XMLHttpRequest object
+											options - contains the options used in the AJAX request
+											exc - contains the JavaScript exception, if one occured*/
+        error: function(ev, xhr, opt){
+
+        	/*
+        	ev.status // 404
+			xhr // error
+			opt // not found
+			*/
+
+        	console.log('Whoops '+xhr+': '+ev.status+', '+'File: '+opt+'!');  //not found
+        }
+    });
+</script>
+</body>
+</html>
