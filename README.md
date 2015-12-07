@@ -1,5 +1,4 @@
-# AjaxJQueryJSon
-Ajax JQuery Json Demo
+# Ajax JQuery Json Demo
 
 # Content
 * Basic Functionality
