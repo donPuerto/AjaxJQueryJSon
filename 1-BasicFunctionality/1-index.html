@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Ajax - Basic Functionality</title>
+</head>
+<body>
+
+<h2>jQuery Ajax Basic Functionality</h2>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    var name = "don";
+  
+    $.ajax({
+        url: 'file.txt',
+
+        success: function(ev, xhr, opt){
+        	console.log(ev);
+        },
+
+
+        error: function(ev, xhr, opt){
+        	console.log('Whoops '+xhr+': '+ev.status+', '+'File: '+opt+'!');  //not found
+        }
+    });
+</script>
+</body>
+</html>

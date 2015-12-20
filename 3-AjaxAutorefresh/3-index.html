@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Ajax - Auto Refresh</title>
+</head>
+<body>
+
+<h2>jQuery Ajax Auto Refresh</h2>
+<div class="setIntervalMethod"></div>
+<div class="setTimeoutMethod"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+
+
+     /*
+        using setinterval method
+
+    */
+    setInterval(function(){
+  
+        $.ajax({
+            url: 'file.txt',
+            cache: false, //default true
+            success: function(ev, xhr, opt){
+                $(".setIntervalMethod").html('<div style="bold:18;">'+ev+'</div>');
+                
+            },
+
+
+            error: function(ev, xhr, opt){
+                console.log('Whoops '+xhr+': '+ev.status+', '+'File: '+opt+'!');  //not found
+            }
+        });
+   
+
+    }, 1000);
+
+    /*
+        using setTimeout
+    */
+    
+    function executeQuery(){
+         $.ajax({
+                url: 'file.txt',
+                cache: false, //default true
+                success: function(ev, xhr, opt){
+                    $(".setTimeoutMethod").html('<div style="bold:18;">'+ev+'</div>');
+                },
+
+                complete: function(){
+                    setTimeout(executeQuery, 1000);    
+                },    
+
+                error: function(ev, xhr, opt){
+                    console.log('Whoops '+xhr+': '+ev.status+', '+'File: '+opt+'!');  //not found
+                }
+            });
+   }
+
+   executeQuery();
+
+   
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Ajax - Auto Navigation</title>
+</head>
+<body>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+
+var app = {
+    message: "Hello World"
+}
+
+app.content = function (){
+    return "hello world";
+}
+
+app.init = (function(){
+
+    console.log(app.content);
+}(jQuery));
+
+
+   
+</script>
+</body>
+</html>

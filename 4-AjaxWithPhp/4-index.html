@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Ajax - Auto Refresh</title>
+</head>
+<body>
+
+<h2>jQuery Ajax Auto Refresh</h2>
+<div class="setIntervalMethod"></div>
+<div class="setTimeoutMethod"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+
+
+    $.ajax({
+            url: 'file.php',
+
+            cache: false, //default true
+
+            type:  'GET',
+
+            success: function(ev, xhr, opt){
+                console.log(ev);
+                
+            },
+
+
+            error: function(ev, xhr, opt){
+                console.log('Whoops '+xhr+': '+ev.status+', '+'File: '+opt+'!');  //not found
+            }
+        });
+
+   
+</script>
+</body>
+</html>

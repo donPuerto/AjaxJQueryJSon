@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Ajax - User Interaction</title>
+</head>
+<body>
+
+<h2>jQuery Ajax User Interaction</h2>
+<a href="#" class="loadData">Loading Ajax Data</a>
+<div class="ajaxOutput"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    
+    $(".loadData").click(function(event) {
+        $.ajax({
+            url: 'file.txt',
+            cache: false, //default true
+            success: function(ev, xhr, opt){
+                $(".ajaxOutput").html('<div style="bold:18;">'+ev+'</div>');
+            },
+
+
+            error: function(ev, xhr, opt){
+                console.log('Whoops '+xhr+': '+ev.status+', '+'File: '+opt+'!');  //not found
+            }
+        });
+    });
+  
+  
+</script>
+</body>
+</html>
