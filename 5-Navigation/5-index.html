@@ -4,24 +4,52 @@
     <title>jQuery Ajax - Auto Navigation</title>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a href="#" data-page="Home">Home</a></li>
+        <li><a href="#" data-page="About">About</a></li>
+        <li><a href="#" data-page="Contact">Contact</a></li>
+    </ul>
+</nav>
 
-
+<section id="pageContent"></section>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 
 var app = {
-    message: "Hello World"
+    nav: $("nav ul li a"),
+    content: $("section#pageContent")
 }
 
-app.content = function (){
-    return "hello world";
+app.putContent = function (content){
+    app.content.html(content);
+    //this.content.html(content);
+}
+
+app.loadPage = function(page){
+    $.ajax({
+        url: 'page.php',
+        type: 'get',
+        cache: 'true',
+        data: {page: page},
+        success: function(data){
+            //console.log(data);
+            app.putContent(data);   
+        },
+        error: function(){
+            app.putContent("Error: Page not found");
+        }
+    });
 }
 
 app.init = (function(){
 
-    console.log(app.content);
-}(jQuery));
+    app.nav.click(function(event) {
+       var page = $(this).data('page');
+       app.loadPage(page)
+    });
+}());
 
 
    
