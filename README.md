@@ -1,4 +1,4 @@
-# Ajax JQuery Json Demo
+# Ajax jQuery JSON Demo
 
 # Content
 * Basic Functionality
