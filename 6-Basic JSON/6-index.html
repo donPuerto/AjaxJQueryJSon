@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Ajax JSON with PHP Basic</title>
+</head>
+<body>
+
+<section id="count"></section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+
+    $.ajax({
+        url: 'JSON.php',
+        type: 'GET',
+        cache: true,
+        dataType: 'json',
+        //data: {param1: 'value1'},
+    })
+    .done(function(data) {
+        console.log(data);
+         $("#count").text(data.contactDetails.firstname + " " + data.contactDetails.lastname);
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        console.log("complete");
+    });
+    
+
+   
+</script>
+</body>
+</html>
